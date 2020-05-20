@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Search Page</title>
+  </head>
+
+  <body>
+    <h1>Search Page</h1>
+    <form action="{{ url_for('index') }}" method="post">
+      <input type="text" placeholder="search" name="searched_for" />
+      <button>Submit</button>
+    </form>
+    {% if books != None %}
+    <ul>
+      {% for book in books %} {% set robin="/robin"%}
+      <li><a href="{{thing}}">{{book}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
