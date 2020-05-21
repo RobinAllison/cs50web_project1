@@ -41,13 +41,12 @@ def index():
         if searched_for != None:
             books = db.execute(
                 "SELECT * FROM books WHERE title LIKE (:variable)", {"variable": '%'+searched_for+'%'}).fetchall()
-            for book in books:
-                infile = book
-                for line in reader(infile):
-                    print(line)
+            book_titles = db.execute(
+                "SELECT title FROM books WHERE title LIKE (:variable)", {"variable": '%'+searched_for+'%'}).fetchall()
+            book_object_list = list(zip(books, book_titles))
         else:
-            books = []
-        return render_template("search.html", books=books)
+            book_object_list = []
+        return render_template("search.html", book_object_list=book_object_list)
 
 
 @app.route("/register", methods=["POST", "GET"])
