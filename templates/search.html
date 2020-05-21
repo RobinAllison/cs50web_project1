@@ -14,7 +14,9 @@
     {% if books != None %}
     <ul>
       {% for book in book_object_list %}
-      <li><a href="{{book[1][0]}}">{{book[0]}}</a></li>
+      <li>
+        <a href="{{book[1][0]}}"><i>{{book[0][2]}}</i> by {{book[0][3]}}</a>
+      </li>
       {% endfor %}
     </ul>
     {% endif %}
